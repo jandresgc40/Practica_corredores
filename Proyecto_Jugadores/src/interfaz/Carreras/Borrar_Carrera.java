@@ -5,8 +5,11 @@
  */
 package interfaz.Carreras;
 
+import datos.Carrera;
 import interfaz.Corredores.*;
 import interfaz.PantallaPrincipal;
+import java.util.List;
+import logicaNegocio.LogicaNegocio;
 
 /**
  *
@@ -22,6 +25,20 @@ public class Borrar_Carrera extends javax.swing.JDialog {
         super(parent, modal);
         pantallaPrincipal = (PantallaPrincipal)parent;
         initComponents();
+        refrescarComboBox();
+        
+    }
+    
+    public void refrescarComboBox() {
+    
+    List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+        
+        for (Carrera carrera : listaCarreras) {
+        
+             jComboBoxCarreras.addItem(carrera.getNombreCarrera());
+        
+        }
+    
     }
 
     /**
@@ -40,11 +57,20 @@ public class Borrar_Carrera extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jComboBoxCarreras.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCarreras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCarrerasActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Selecciona la carrera a borrar:");
 
         jButtonBorrarCarrera.setText("Borrar");
+        jButtonBorrarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarCarreraActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +117,32 @@ public class Borrar_Carrera extends javax.swing.JDialog {
         setVisible(false);
         
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jComboBoxCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCarrerasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCarrerasActionPerformed
+
+    private void jButtonBorrarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarCarreraActionPerformed
+        
+        String seleccionado = (String) jComboBoxCarreras.getSelectedItem();
+        
+        List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+        
+        for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+            
+                listaCarreras.remove(i);
+            
+            }
+        
+        }
+        
+        refrescarComboBox();
+        setVisible(false);
+        
+        
+    }//GEN-LAST:event_jButtonBorrarCarreraActionPerformed
 
 
 

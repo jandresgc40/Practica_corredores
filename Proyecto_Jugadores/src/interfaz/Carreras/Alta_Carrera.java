@@ -5,8 +5,13 @@
  */
 package interfaz.Carreras;
 
+import datos.Carrera;
+import datos.Corredor;
 import interfaz.Corredores.*;
 import interfaz.PantallaPrincipal;
+import java.util.ArrayList;
+import java.util.List;
+import logicaNegocio.LogicaNegocio;
 
 /**
  *
@@ -15,6 +20,10 @@ import interfaz.PantallaPrincipal;
 public class Alta_Carrera extends javax.swing.JDialog {
 
     private PantallaPrincipal pantallaPrincipal;
+    
+    List <Corredor> listaCorredoresSeleccionados = new ArrayList<>();
+    
+    
     /**
      * Creates new form Alta_Corredor
      */
@@ -22,6 +31,26 @@ public class Alta_Carrera extends javax.swing.JDialog {
         super(parent, modal);
         pantallaPrincipal = (PantallaPrincipal)parent;
         initComponents();
+        refrescarComboBox();
+        
+    }
+    
+    public void refrescarComboBox() {
+    
+    List <Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
+        
+        for (Corredor corredor : listaCorredores) {
+        
+             jComboBoxCorredores.addItem(corredor.getNombre());
+        
+        }
+    
+    }
+    
+    public void aniadirCorredorACarrera() {
+    
+        
+    
     }
 
     /**
@@ -44,7 +73,7 @@ public class Alta_Carrera extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jButtonAltaCorredor = new javax.swing.JButton();
         jButtonCancelarAltaCorredor = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxCorredores = new javax.swing.JComboBox<>();
         jButtonAnadirCorredorCarrera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -80,6 +109,11 @@ public class Alta_Carrera extends javax.swing.JDialog {
         jLabel5.setText("Lista de corredores: ");
 
         jButtonAltaCorredor.setText("Alta");
+        jButtonAltaCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAltaCorredorActionPerformed(evt);
+            }
+        });
 
         jButtonCancelarAltaCorredor.setText("Cancelar");
         jButtonCancelarAltaCorredor.addActionListener(new java.awt.event.ActionListener() {
@@ -87,8 +121,6 @@ public class Alta_Carrera extends javax.swing.JDialog {
                 jButtonCancelarAltaCorredorActionPerformed(evt);
             }
         });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButtonAnadirCorredorCarrera.setText("Añadir");
         jButtonAnadirCorredorCarrera.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +150,7 @@ public class Alta_Carrera extends javax.swing.JDialog {
                             .addComponent(jTextFieldLugarCarrera)
                             .addComponent(jTextFieldMaximoParticipantes)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButtonAnadirCorredorCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
@@ -150,7 +182,7 @@ public class Alta_Carrera extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAnadirCorredorCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,7 +203,23 @@ public class Alta_Carrera extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldLugarCarreraActionPerformed
 
     private void jButtonAnadirCorredorCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirCorredorCarreraActionPerformed
-        // TODO add your handling code here:
+    
+        String seleccionado = (String) jComboBoxCorredores.getSelectedItem();
+        
+        List <Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
+        
+         for (int i = 0 ; i < listaCorredores.size() ; i++) {
+        
+            if (listaCorredores.get(i).getNombre().equals(seleccionado)) {
+            
+                listaCorredoresSeleccionados.add(listaCorredores.get(i));
+            
+            }
+        
+        }
+        
+        
+        
     }//GEN-LAST:event_jButtonAnadirCorredorCarreraActionPerformed
 
     private void jButtonCancelarAltaCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarAltaCorredorActionPerformed
@@ -184,6 +232,24 @@ public class Alta_Carrera extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldMaximoParticipantesActionPerformed
 
+    private void jButtonAltaCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaCorredorActionPerformed
+     
+        String nombre = jTextFieldNombreCarrera.getText();
+        String fecha = jTextFieldFechaCarrera.getText();
+        String lugar = jTextFieldLugarCarrera.getText(); 
+        String participantes = jTextFieldMaximoParticipantes.getText();
+      //  List<Corredor> listaCorredores = jTextFieldTelefonoCorredor.getText();
+        
+        Carrera carrera = new Carrera(nombre,fecha,lugar,participantes, listaCorredoresSeleccionados);
+    
+        LogicaNegocio.aniadirCarrera(carrera);
+        
+        listaCorredoresSeleccionados = new ArrayList<>();
+        
+        dispose();
+        
+    }//GEN-LAST:event_jButtonAltaCorredorActionPerformed
+
    
 
 
@@ -191,7 +257,7 @@ public class Alta_Carrera extends javax.swing.JDialog {
     private javax.swing.JButton jButtonAltaCorredor;
     private javax.swing.JButton jButtonAnadirCorredorCarrera;
     private javax.swing.JButton jButtonCancelarAltaCorredor;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxCorredores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

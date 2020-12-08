@@ -31,28 +31,43 @@ public class Alta_Corredor extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextFieldNombreCorredor = new javax.swing.JTextField();
+        jTextFieldDniCorredor = new javax.swing.JTextField();
+        jTextFieldFechaNacimientoCorredor = new javax.swing.JTextField();
+        jTextFieldDireccionCorredor = new javax.swing.JTextField();
+        jTextFieldTelefonoCorredor = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButtonAltaCorredor = new javax.swing.JButton();
         jButtonCancelarAltaCorredor = new javax.swing.JButton();
-        jTextFieldNombreCorredor = new javax.swing.JTextField();
-        jTextFieldDni = new javax.swing.JTextField();
-        jTextFieldFechaNacimiento = new javax.swing.JTextField();
-        jTextFieldDireccion = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldTelefono = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jTextFieldNombreCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombreCorredorActionPerformed(evt);
+            }
+        });
+
+        jTextFieldFechaNacimientoCorredor.setText("dd-MM-aaaa");
+        jTextFieldFechaNacimientoCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldFechaNacimientoCorredorActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre:");
+
         jLabel2.setText("DNI:");
 
-        jLabel3.setText("Fecha de Nacimiento;");
+        jLabel3.setText("Fecha de nacimiento:");
 
         jLabel4.setText("Dirección:");
 
-        jLabel5.setText("Número de teléfono:");
+        jLabel5.setText("Teléfono de contacto:");
 
         jButtonAltaCorredor.setText("Alta");
         jButtonAltaCorredor.addActionListener(new java.awt.event.ActionListener() {
@@ -65,33 +80,6 @@ public class Alta_Corredor extends javax.swing.JDialog {
         jButtonCancelarAltaCorredor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarAltaCorredorActionPerformed(evt);
-            }
-        });
-
-        jTextFieldNombreCorredor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNombreCorredorActionPerformed(evt);
-            }
-        });
-
-        jTextFieldDni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDniActionPerformed(evt);
-            }
-        });
-
-        jTextFieldFechaNacimiento.setText("dd-MM-aaaa");
-        jTextFieldFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldFechaNacimientoActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Nombre corredor:");
-
-        jTextFieldTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTelefonoActionPerformed(evt);
             }
         });
 
@@ -112,16 +100,16 @@ public class Alta_Corredor extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldNombreCorredor)
-                            .addComponent(jTextFieldDni)
-                            .addComponent(jTextFieldFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                            .addComponent(jTextFieldDireccion)
-                            .addComponent(jTextFieldTelefono)))
+                            .addComponent(jTextFieldDniCorredor)
+                            .addComponent(jTextFieldFechaNacimientoCorredor)
+                            .addComponent(jTextFieldDireccionCorredor)
+                            .addComponent(jTextFieldTelefonoCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addComponent(jButtonAltaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonCancelarAltaCorredor)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,24 +120,24 @@ public class Alta_Corredor extends javax.swing.JDialog {
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDniCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFechaNacimientoCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDireccionCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                    .addComponent(jTextFieldTelefonoCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelarAltaCorredor)
-                    .addComponent(jButtonAltaCorredor))
+                    .addComponent(jButtonAltaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -181,10 +169,10 @@ public class Alta_Corredor extends javax.swing.JDialog {
     private void jButtonAltaCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaCorredorActionPerformed
        
         String nombre = jTextFieldNombreCorredor.getText();
-        String dni = jTextFieldDni.getText();
-        String fechaNacimiento = jTextFieldFechaNacimiento.getText();
-        String direccion = jTextFieldDireccion.getText();
-        String telefonoContacto = jTextFieldTelefono.getText();
+        String dni = jTextFieldDniCorredor.getText();
+        String fechaNacimiento = jTextFieldFechaNacimientoCorredor.getText(); 
+        String direccion = jTextFieldDireccionCorredor.getText();
+        String telefonoContacto = jTextFieldTelefonoCorredor.getText();
         
         Corredor corredor = new Corredor(nombre, dni, fechaNacimiento, direccion, telefonoContacto);
     
@@ -192,6 +180,10 @@ public class Alta_Corredor extends javax.swing.JDialog {
         dispose();
         
     }//GEN-LAST:event_jButtonAltaCorredorActionPerformed
+
+    private void jTextFieldFechaNacimientoCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechaNacimientoCorredorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFechaNacimientoCorredorActionPerformed
 
    
  
@@ -204,10 +196,10 @@ public class Alta_Corredor extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextFieldDireccion;
-    private javax.swing.JTextField jTextFieldDni;
-    private javax.swing.JTextField jTextFieldFechaNacimiento;
+    private javax.swing.JTextField jTextFieldDireccionCorredor;
+    private javax.swing.JTextField jTextFieldDniCorredor;
+    private javax.swing.JTextField jTextFieldFechaNacimientoCorredor;
     private javax.swing.JTextField jTextFieldNombreCorredor;
-    private javax.swing.JTextField jTextFieldTelefono;
+    private javax.swing.JTextField jTextFieldTelefonoCorredor;
     // End of variables declaration//GEN-END:variables
 }
