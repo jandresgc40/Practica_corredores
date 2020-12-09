@@ -122,6 +122,12 @@ public class Alta_Carrera extends javax.swing.JDialog {
             }
         });
 
+        jComboBoxCorredores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCorredoresActionPerformed(evt);
+            }
+        });
+
         jButtonAnadirCorredorCarrera.setText("Añadir");
         jButtonAnadirCorredorCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,12 +189,12 @@ public class Alta_Carrera extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBoxCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAnadirCorredorCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonAnadirCorredorCarrera))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelarAltaCorredor)
                     .addComponent(jButtonAltaCorredor))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -248,6 +254,10 @@ public class Alta_Carrera extends javax.swing.JDialog {
         dispose();
         
     }//GEN-LAST:event_jButtonAltaCorredorActionPerformed
+
+    private void jComboBoxCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCorredoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCorredoresActionPerformed
 
    
 

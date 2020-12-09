@@ -109,6 +109,7 @@ public class Modificar_Carrera extends javax.swing.JDialog {
             }
         
         }
+         
     
     }
      
@@ -160,7 +161,7 @@ public class Modificar_Carrera extends javax.swing.JDialog {
         jLabelFechaCarrera = new javax.swing.JLabel();
         jLabelLugarCarrera = new javax.swing.JLabel();
         jLabelMaximosParticipantes = new javax.swing.JLabel();
-        jTextFieldNuevoNombreCarrea = new javax.swing.JTextField();
+        jTextFieldNuevoNombreCarrera = new javax.swing.JTextField();
         jTextFieldNuevaFechaCarrera = new javax.swing.JTextField();
         jTextFieldNuevoLugarCarrera = new javax.swing.JTextField();
         jTextFieldNuevoMaximoParticipantes = new javax.swing.JTextField();
@@ -187,14 +188,14 @@ public class Modificar_Carrera extends javax.swing.JDialog {
 
         jLabel1.setText("Aquí puedes modificar las carreras");
 
-        jButtonGuardarModificados.setText("Guardar");
+        jButtonGuardarModificados.setText("Modificar");
         jButtonGuardarModificados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGuardarModificadosActionPerformed(evt);
             }
         });
 
-        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setText("Aceptar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
@@ -220,9 +221,9 @@ public class Modificar_Carrera extends javax.swing.JDialog {
 
         jLabelMaximosParticipantes.setText("Máximos participantes");
 
-        jTextFieldNuevoNombreCarrea.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNuevoNombreCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNuevoNombreCarreaActionPerformed(evt);
+                jTextFieldNuevoNombreCarreraActionPerformed(evt);
             }
         });
 
@@ -260,58 +261,55 @@ public class Modificar_Carrera extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 94, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelNombreCarrera)
-                                    .addComponent(jTextFieldNuevoNombreCarrea, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(141, 141, 141)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelMaximosParticipantes)
-                                    .addComponent(jTextFieldNuevoMaximoParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(94, 94, 94)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBoxCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(234, 234, 234)
-                                        .addComponent(jLabelFechaCarrera)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jLabelLugarCarrera))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(233, 233, 233)
-                                        .addComponent(jTextFieldNuevaFechaCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldNuevoLugarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonGuardarModificados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCancelar)
-                .addGap(207, 207, 207))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jButtonAniadirCorredor)
-                        .addGap(112, 112, 112)
-                        .addComponent(jButtonBorrarCorredor))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBoxCorredoresSinAniadir, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldNuevoNombreCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelNombreCarrera))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelFechaCarrera)
+                                    .addComponent(jTextFieldNuevaFechaCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBoxBorrarCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNuevoLugarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelLugarCarrera))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jTextFieldNuevoMaximoParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabelMaximosParticipantes))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonGuardarModificados)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCancelar)
+                        .addGap(209, 209, 209))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(jButtonAniadirCorredor)
+                                .addGap(112, 112, 112)
+                                .addComponent(jButtonBorrarCorredor))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jComboBoxCorredoresSinAniadir, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxBorrarCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(64, 64, 64))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,12 +332,12 @@ public class Modificar_Carrera extends javax.swing.JDialog {
                     .addComponent(jLabelMaximosParticipantes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNuevoNombreCarrea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNuevaFechaCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNuevoLugarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNuevoNombreCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldNuevoMaximoParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(35, 35, 35)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextFieldNuevaFechaCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNuevoLugarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxCorredoresSinAniadir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxBorrarCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -351,30 +349,74 @@ public class Modificar_Carrera extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGuardarModificados)
                     .addComponent(jButtonCancelar))
-                .addGap(30, 30, 30))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGuardarModificadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarModificadosActionPerformed
-        // TODO add your handling code here:
+       
+      List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+        
+      String seleccionado = (String) jComboBoxCarreras.getSelectedItem();
+       
+        
+        for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+         
+                if (!jTextFieldNuevoNombreCarrera.getText().equals("")) {listaCarreras.get(i).setNombreCarrera(jTextFieldNuevoNombreCarrera.getText());}
+                if (!jTextFieldNuevaFechaCarrera.getText().equals("")) {listaCarreras.get(i).setFechaCarrera(jTextFieldNuevaFechaCarrera.getText());}
+                if (!jTextFieldNuevoLugarCarrera.getText().equals("")) {listaCarreras.get(i).setLugarCarrera(jTextFieldNuevoLugarCarrera.getText());}
+                if (!jTextFieldNuevoMaximoParticipantes.getText().equals("")) {listaCarreras.get(i).setNumMaxParticipantes(jTextFieldNuevoMaximoParticipantes.getText());}
+            }
+        
+        }
+        
     }//GEN-LAST:event_jButtonGuardarModificadosActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         setVisible(false);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
-    private void jTextFieldNuevoNombreCarreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNuevoNombreCarreaActionPerformed
+    private void jTextFieldNuevoNombreCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNuevoNombreCarreraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNuevoNombreCarreaActionPerformed
+    }//GEN-LAST:event_jTextFieldNuevoNombreCarreraActionPerformed
 
     private void jTextFieldNuevoMaximoParticipantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNuevoMaximoParticipantesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNuevoMaximoParticipantesActionPerformed
 
     private void jButtonAniadirCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAniadirCorredorActionPerformed
+
+      String seleccionado = (String) jComboBoxCarreras.getSelectedItem();
+      String corredorseleccionado = (String) jComboBoxCorredoresSinAniadir.getSelectedItem();
         
+        List <Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
+        List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+        
+         for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+                
+                for (int x = 0; x < listaCorredores.size() ; x++) {
+                
+                    if (listaCorredores.get(x).getNombre().equals(corredorseleccionado)) {
+                    
+                        listaCarreras.get(i).getListaCorredores().add(listaCorredores.get(x));
+                    
+                    }
+                
+                }
+         
+            }
+        
+        }
+         
+         refrescarComboBoxAniadirCorredor();
+         refrescarComboBoxBorrarCorredores();
+               
         
         
     }//GEN-LAST:event_jButtonAniadirCorredorActionPerformed
@@ -465,6 +507,6 @@ public class Modificar_Carrera extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldNuevaFechaCarrera;
     private javax.swing.JTextField jTextFieldNuevoLugarCarrera;
     private javax.swing.JTextField jTextFieldNuevoMaximoParticipantes;
-    private javax.swing.JTextField jTextFieldNuevoNombreCarrea;
+    private javax.swing.JTextField jTextFieldNuevoNombreCarrera;
     // End of variables declaration//GEN-END:variables
 }
