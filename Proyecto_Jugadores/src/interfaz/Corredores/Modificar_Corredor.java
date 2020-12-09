@@ -358,6 +358,8 @@ public class Modificar_Corredor extends javax.swing.JDialog {
         
         }
         
+        refrescarTabla();
+        
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void jTextFieldNuevoTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNuevoTelefonoActionPerformed

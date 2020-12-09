@@ -216,10 +216,9 @@ public class Alta_Carrera extends javax.swing.JDialog {
             
             }
         
+        
         }
-        
-        
-        
+       
     }//GEN-LAST:event_jButtonAnadirCorredorCarreraActionPerformed
 
     private void jButtonCancelarAltaCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarAltaCorredorActionPerformed

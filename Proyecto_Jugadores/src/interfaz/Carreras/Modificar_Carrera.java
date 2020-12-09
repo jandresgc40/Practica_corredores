@@ -6,6 +6,7 @@
 package interfaz.Carreras;
 
 import datos.Carrera;
+import datos.Corredor;
 import interfaz.Corredores.*;
 import interfaz.PantallaPrincipal;
 import java.util.List;
@@ -27,6 +28,9 @@ public class Modificar_Carrera extends javax.swing.JDialog {
         pantallaPrincipal = (PantallaPrincipal)parent;
         initComponents();
         refrescarTabla();
+        refrescarComboBoxCarreras();
+        refrescarComboBoxAniadirCorredor();
+        refrescarComboBoxBorrarCorredores();
         
     }
     
@@ -54,6 +58,85 @@ public class Modificar_Carrera extends javax.swing.JDialog {
         dtm.addRow(carrera.toArrayString());
         
     }
+    
+    public void refrescarComboBoxCarreras() {
+    
+    List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+        
+        for (Carrera carrera : listaCarreras) {
+        
+             jComboBoxCarreras.addItem(carrera.getNombreCarrera());
+        
+        }
+    
+    }
+    
+     public void refrescarComboBoxAniadirCorredor() {
+    
+        jComboBoxCorredoresSinAniadir.removeAllItems();
+         
+        String seleccionado = (String) jComboBoxCarreras.getSelectedItem();
+         
+        List <Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
+        List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+              
+         for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+                
+                for (int x = 0 ; x < listaCorredores.size() ; x ++) {
+                
+                    boolean comprobar = false;
+                    
+                    for (int y = 0 ; y < listaCarreras.get(i).getListaCorredores().size() ; y++) {
+                    
+                        if (listaCorredores.get(x) == listaCarreras.get(i).getListaCorredores().get(y)) {
+                        
+                            comprobar = true;
+                                    
+                        }
+                    
+                    }
+                    
+                    if (comprobar == false) {
+                        
+                        jComboBoxCorredoresSinAniadir.addItem(listaCorredores.get(x).getNombre());  
+                    
+                    }
+                
+                }
+         
+            }
+        
+        }
+    
+    }
+     
+    public void refrescarComboBoxBorrarCorredores() {
+    
+       jComboBoxBorrarCorredores.removeAllItems();
+        
+       String seleccionado = (String) jComboBoxCarreras.getSelectedItem();
+        
+       List <Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
+       List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+       
+        
+         for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+                
+                for (int x = 0 ; x < listaCarreras.get(i).getListaCorredores().size() ; x ++) {
+                
+                    jComboBoxBorrarCorredores.addItem(listaCarreras.get(i).getListaCorredores().get(x).getNombre());
+                
+                }
+         
+            }
+        
+        }
+    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,21 +153,21 @@ public class Modificar_Carrera extends javax.swing.JDialog {
         jButtonGuardarModificados = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxCarreras = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelNombreCarrera = new javax.swing.JLabel();
+        jLabelFechaCarrera = new javax.swing.JLabel();
+        jLabelLugarCarrera = new javax.swing.JLabel();
+        jLabelMaximosParticipantes = new javax.swing.JLabel();
         jTextFieldNuevoNombreCarrea = new javax.swing.JTextField();
         jTextFieldNuevaFechaCarrera = new javax.swing.JTextField();
         jTextFieldNuevoLugarCarrera = new javax.swing.JTextField();
         jTextFieldNuevoMaximoParticipantes = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jComboBoxCorredoresSinAniadir = new javax.swing.JComboBox<>();
+        jComboBoxBorrarCorredores = new javax.swing.JComboBox<>();
+        jButtonAniadirCorredor = new javax.swing.JButton();
+        jButtonBorrarCorredor = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -121,16 +204,21 @@ public class Modificar_Carrera extends javax.swing.JDialog {
         jLabel2.setText("Nombre de la carrera a modificar:");
 
         jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Original:");
 
-        jLabel4.setText("Nombre de la carrera");
+        jLabelNombreCarrera.setText("Nombre de la carrera");
 
-        jLabel5.setText("Fecha");
+        jLabelFechaCarrera.setText("Fecha");
 
-        jLabel6.setText("Lugar");
+        jLabelLugarCarrera.setText("Lugar");
 
-        jLabel7.setText("Máximos participantes");
+        jLabelMaximosParticipantes.setText("Máximos participantes");
 
         jTextFieldNuevoNombreCarrea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,17 +232,17 @@ public class Modificar_Carrera extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("Añadir Corredor");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAniadirCorredor.setText("Añadir Corredor");
+        jButtonAniadirCorredor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonAniadirCorredorActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Borrar corredor");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBorrarCorredor.setText("Borrar corredor");
+        jButtonBorrarCorredor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonBorrarCorredorActionPerformed(evt);
             }
         });
 
@@ -175,12 +263,12 @@ public class Modificar_Carrera extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 94, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
+                                    .addComponent(jLabelNombreCarrera)
                                     .addComponent(jTextFieldNuevoNombreCarrea, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(141, 141, 141)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7)
+                                    .addComponent(jLabelMaximosParticipantes)
                                     .addComponent(jTextFieldNuevoMaximoParticipantes, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(29, 29, 29))
                             .addGroup(layout.createSequentialGroup()
@@ -188,12 +276,12 @@ public class Modificar_Carrera extends javax.swing.JDialog {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jComboBoxCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(234, 234, 234)
-                                        .addComponent(jLabel5)
+                                        .addComponent(jLabelFechaCarrera)
                                         .addGap(39, 39, 39)
-                                        .addComponent(jLabel6))
+                                        .addComponent(jLabelLugarCarrera))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(233, 233, 233)
                                         .addComponent(jTextFieldNuevaFechaCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,17 +299,17 @@ public class Modificar_Carrera extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(112, 112, 112)
-                        .addComponent(jButton2)
+                        .addComponent(jButtonAniadirCorredor)
                         .addGap(112, 112, 112)
-                        .addComponent(jButton3))
+                        .addComponent(jButtonBorrarCorredor))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxCorredoresSinAniadir, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxBorrarCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel8))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -235,15 +323,15 @@ public class Modificar_Carrera extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabelNombreCarrera)
+                    .addComponent(jLabelFechaCarrera)
+                    .addComponent(jLabelLugarCarrera)
+                    .addComponent(jLabelMaximosParticipantes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNuevoNombreCarrea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,12 +341,12 @@ public class Modificar_Carrera extends javax.swing.JDialog {
                     .addComponent(jLabel8))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxCorredoresSinAniadir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxBorrarCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButtonAniadirCorredor)
+                    .addComponent(jButtonBorrarCorredor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGuardarModificados)
@@ -285,13 +373,70 @@ public class Modificar_Carrera extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNuevoMaximoParticipantesActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonAniadirCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAniadirCorredorActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_jButtonAniadirCorredorActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonBorrarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarCorredorActionPerformed
+        
+        String seleccionado = (String) jComboBoxCarreras.getSelectedItem();
+        
+        List <Corredor> listaCorredores = LogicaNegocio.getListaCorredores();
+        List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+        
+         for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+                
+                for (int x = 0 ; x < listaCarreras.get(i).getListaCorredores().size() ; x ++) {
+                
+                    if (listaCarreras.get(i).getListaCorredores().get(x).getNombre().equals(jComboBoxBorrarCorredores.getSelectedItem())) {
+                    
+                        listaCarreras.get(i).getListaCorredores().remove(x);
+                    
+                    }
+                
+                }
+         
+            }
+        
+        }
+         
+         refrescarComboBoxAniadirCorredor();
+         refrescarComboBoxBorrarCorredores();
+       
+        
+    //    refrescarComboBox();
+ 
+        
+    }//GEN-LAST:event_jButtonBorrarCorredorActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        String seleccionado = (String) jComboBoxCarreras.getSelectedItem();
+        
+        List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+        
+        for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+            
+                jLabelNombreCarrera.setText(listaCarreras.get(i).getNombreCarrera());
+                jLabelFechaCarrera.setText(listaCarreras.get(i).getFechaCarrera());
+                jLabelLugarCarrera.setText(listaCarreras.get(i).getLugarCarrera());
+                jLabelMaximosParticipantes.setText(listaCarreras.get(i).getNumMaxParticipantes());
+            
+            }
+        
+        }
+        
+        refrescarComboBoxAniadirCorredor();
+        refrescarComboBoxBorrarCorredores();
+        refrescarTabla();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -300,21 +445,21 @@ public class Modificar_Carrera extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonAniadirCorredor;
+    private javax.swing.JButton jButtonBorrarCorredor;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGuardarModificados;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBoxBorrarCorredores;
+    private javax.swing.JComboBox<String> jComboBoxCarreras;
+    private javax.swing.JComboBox<String> jComboBoxCorredoresSinAniadir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelFechaCarrera;
+    private javax.swing.JLabel jLabelLugarCarrera;
+    private javax.swing.JLabel jLabelMaximosParticipantes;
+    private javax.swing.JLabel jLabelNombreCarrera;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableModificarCarreras;
     private javax.swing.JTextField jTextFieldNuevaFechaCarrera;
