@@ -5,7 +5,11 @@
  */
 package interfaz.Carreras;
 
+import datos.Carrera;
 import interfaz.PantallaPrincipal;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import logicaNegocio.LogicaNegocio;
 
 /**
  *
@@ -21,7 +25,26 @@ public class Carreras_Acabadas extends javax.swing.JDialog {
         super(parent, modal);
         pantallaPrincipal = (PantallaPrincipal)parent;
         initComponents();
+        refrescarTabla();
+        
     }
+    
+     public void refrescarTabla() {
+    
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.setColumnIdentifiers(new String[]{"Nombre", "Fecha", "Lugar", "Número máximo participantes", "Participantes"});
+       
+        List <Carrera> listaCarrerasTerminadas = LogicaNegocio.getListaCarrerasTerminadas();
+        
+        for (Carrera carrera : listaCarrerasTerminadas) {
+        
+            dtm.addRow(carrera.toArrayString());
+        
+        }
+        
+        jTableCarrerasAcabadas.setModel(dtm);
+        
+     } 
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -10,6 +10,16 @@ public class Carrera {
     private String numMaxParticipantes;
     private List<Corredor> listaCorredores; // el dorsal puede ser la posición de ese corredor en el array.
    
+    private InformeCarrera informeCarrera;
+
+    public InformeCarrera getInformeCarrera() {
+        return informeCarrera;
+    }
+
+    public void setInformeCarrera(InformeCarrera informeCarrera) {
+        this.informeCarrera = informeCarrera;
+    }
+    
     public Carrera(String nombreCarrera, String fechaCarrera, String lugarCarrera, String numMaxParticipantes, List<Corredor> listaCorredores) {
         this.nombreCarrera = nombreCarrera;
         this.fechaCarrera = fechaCarrera;

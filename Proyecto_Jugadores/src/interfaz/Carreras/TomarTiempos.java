@@ -5,7 +5,12 @@
  */
 package interfaz.Carreras;
 
+import datos.Carrera;
+import datos.Corredor;
+import datos.InformeCarrera;
 import interfaz.PantallaPrincipal;
+import java.util.List;
+import logicaNegocio.LogicaNegocio;
 
 /**
  *
@@ -21,6 +26,54 @@ public class TomarTiempos extends javax.swing.JDialog {
         super(parent, modal);
         pantallaPrincipal = (PantallaPrincipal)parent;
         initComponents();
+        refrescarComboBox1();
+        refrescarComboBox2();
+        
+    }
+    
+    public void refrescarComboBox1() {
+    
+    List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+        
+        for (Carrera carrera : listaCarreras) {
+        
+             jComboBoxListaCarreras.addItem(carrera.getNombreCarrera());
+        
+        }
+    
+    }
+    
+     public void refrescarComboBox2() {
+    
+        String seleccionado = (String) jComboBoxListaCarreras.getSelectedItem();
+        
+        String dorsal = "";
+        int numeroDorsal = 0;
+        
+        List <Corredor> listaCorredores;
+        List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+              
+         for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+                
+                listaCorredores = listaCarreras.get(i).getListaCorredores();
+                
+                for (int x = 0 ; x < listaCorredores.size() ; x ++) {
+                
+                    numeroDorsal = x + 1;
+                    
+                    dorsal = String.valueOf(numeroDorsal);
+                    
+                    jComboBoxDorsal.addItem(dorsal);
+                
+                }
+         
+            }
+        
+        }
+         
+    
     }
 
     /**
@@ -36,9 +89,11 @@ public class TomarTiempos extends javax.swing.JDialog {
         jButtonTiempoCorredor = new javax.swing.JButton();
         jComboBoxDorsal = new javax.swing.JComboBox<>();
         jButtonSalir = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxListaCarreras = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jButtonIniciarTemporizador = new javax.swing.JButton();
+        componenteTemporizador1 = new componentetemporizador.ComponenteTemporizador();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,7 +106,6 @@ public class TomarTiempos extends javax.swing.JDialog {
             }
         });
 
-        jComboBoxDorsal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxDorsal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxDorsalActionPerformed(evt);
@@ -65,8 +119,6 @@ public class TomarTiempos extends javax.swing.JDialog {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel2.setText("Dorsal:");
 
         jButtonIniciarTemporizador.setText("Iniciar");
@@ -76,51 +128,68 @@ public class TomarTiempos extends javax.swing.JDialog {
             }
         });
 
+        jButton1.setText("Fin de la carrera");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxListaCarreras, 0, 167, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(componenteTemporizador1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
                         .addComponent(jButtonIniciarTemporizador, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBoxDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonTiempoCorredor)
-                        .addGap(3, 3, 3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, 0, 167, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jComboBoxDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonTiempoCorredor))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(48, 48, 48)))))
                 .addGap(118, 118, 118))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxListaCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jButtonIniciarTemporizador)
-                .addGap(30, 30, 30)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonIniciarTemporizador)
+                    .addComponent(componenteTemporizador1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonTiempoCorredor)
                     .addComponent(jComboBoxDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonSalir)
-                .addGap(36, 36, 36))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,7 +200,27 @@ public class TomarTiempos extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxDorsalActionPerformed
 
     private void jButtonTiempoCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTiempoCorredorActionPerformed
-        // TODO add your handling code here:
+
+        String dorsal = (String) jComboBoxDorsal.getSelectedItem();
+        String tiempo = componenteTemporizador1.getText();
+               
+        String seleccionado = (String) jComboBoxListaCarreras.getSelectedItem();
+       
+        List <Corredor> listaCorredores;
+        List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+              
+         for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+                
+                InformeCarrera informeCarrera = new InformeCarrera(tiempo, dorsal);
+                listaCarreras.get(i).setInformeCarrera(informeCarrera);
+                
+            }
+        
+        }
+        
+        
     }//GEN-LAST:event_jButtonTiempoCorredorActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
@@ -141,20 +230,47 @@ public class TomarTiempos extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonIniciarTemporizadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarTemporizadorActionPerformed
-        // TODO add your handling code here:
+        
+       componenteTemporizador1.setNumSegundos(120);
+        
     }//GEN-LAST:event_jButtonIniciarTemporizadorActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+         List <Carrera> listaCarreras = LogicaNegocio.getListaCarreras();
+         List <Carrera> listaCarrerasTerminadas = LogicaNegocio.getListaCarrerasTerminadas();
+
+         String seleccionado = (String) jComboBoxListaCarreras.getSelectedItem();
+              
+         for (int i = 0 ; i < listaCarreras.size() ; i++) {
+        
+            if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
+                
+                listaCarrerasTerminadas.add(listaCarreras.get(i));
+                listaCarreras.remove(i);
+                
+            }
+        
+        }
+         
+        setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private componentetemporizador.ComponenteTemporizador componenteTemporizador1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonIniciarTemporizador;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonTiempoCorredor;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxDorsal;
+    private javax.swing.JComboBox<String> jComboBoxListaCarreras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

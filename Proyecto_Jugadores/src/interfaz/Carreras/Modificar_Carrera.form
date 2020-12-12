@@ -47,15 +47,10 @@
                                   <Component id="jTextFieldNuevoLugarCarrera" min="-2" pref="70" max="-2" attributes="0"/>
                                   <Component id="jLabelLugarCarrera" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldNuevoMaximoParticipantes" min="-2" pref="96" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="jLabelMaximosParticipantes" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jTextFieldNuevoMaximoParticipantes" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
+                                  <Component id="jLabelMaximosParticipantes" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -123,12 +118,14 @@
                   <Component id="jLabelMaximosParticipantes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextFieldNuevoNombreCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldNuevoMaximoParticipantes" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jTextFieldNuevaFechaCarrera" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="jTextFieldNuevoLugarCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jTextFieldNuevoNombreCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldNuevoMaximoParticipantes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldNuevoLugarCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">

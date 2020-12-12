@@ -11,6 +11,7 @@ public class LogicaNegocio {
     
     private static List<Corredor> listaCorredores = new ArrayList<>();
     private static List<Carrera> listaCarreras = new ArrayList<>();
+    private static List<Carrera> listaCarrerasTerminadas = new ArrayList<>();
     
     
     public static void aniadirCorredor(Corredor corredor) {
@@ -19,9 +20,15 @@ public class LogicaNegocio {
     
     }
     
-     public static void aniadirCarrera(Carrera carrera) {
+    public static void aniadirCarrera(Carrera carrera) {
     
         listaCarreras.add(carrera);
+    
+    }
+    
+    public static void aniadorCarreraTerminada(Carrera carrera) {
+    
+        listaCarrerasTerminadas.add(carrera);
     
     }
 
@@ -32,9 +39,10 @@ public class LogicaNegocio {
     public static List<Carrera> getListaCarreras() {
         return listaCarreras;
     }
-     
-     
-    
+
+    public static List<Carrera> getListaCarrerasTerminadas() {  
+        return listaCarrerasTerminadas;    
+    }
     
     
 }
