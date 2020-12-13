@@ -8,6 +8,7 @@ package interfaz;
 import interfaz.Carreras.Alta_Carrera;
 import interfaz.Carreras.Borrar_Carrera;
 import interfaz.Carreras.Carreras_Acabadas;
+import interfaz.Carreras.InformesCarreras;
 import interfaz.Carreras.Modificar_Carrera;
 import interfaz.Carreras.Mostrar_Carreras;
 import interfaz.Carreras.TomarTiempos;
@@ -275,7 +276,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCarrerasFinalizadasActionPerformed
 
     private void jButtonInformesDeCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInformesDeCarrerasActionPerformed
-        // TODO add your handling code here:
+        
+        InformesCarreras informesCarreras = new InformesCarreras(this, true);
+        informesCarreras.setVisible(true);
+        
     }//GEN-LAST:event_jButtonInformesDeCarrerasActionPerformed
 
     /**

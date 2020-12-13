@@ -5,6 +5,11 @@
  */
 package interfaz.Carreras;
 
+import datos.Carrera;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import logicaNegocio.LogicaNegocio;
+
 /**
  *
  * @author Ovejo
@@ -17,7 +22,50 @@ public class InformesCarreras extends javax.swing.JDialog {
     public InformesCarreras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        refrescarComboBoxCarreras();
+        refrescarTabla();
+        
     }
+    
+    public void refrescarComboBoxCarreras() {
+    
+    List <Carrera> listaCarrerasTerminadas = LogicaNegocio.getListaCarrerasTerminadas();
+        
+        for (Carrera carrera : listaCarrerasTerminadas) {
+        
+             jComboBoxListaCarreras.addItem(carrera.getNombreCarrera());
+        
+        }
+    
+    }
+    
+    public void refrescarTabla() {
+    
+        String seleccionado = (String) jComboBoxListaCarreras.getSelectedItem();
+        
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.setColumnIdentifiers(new String[]{"Dorsal", "tiempo"});
+       
+        List <Carrera> listaCarrerasTerminadas = LogicaNegocio.getListaCarrerasTerminadas();
+        
+          for (int i = 0 ; i < listaCarrerasTerminadas.size() ; i++) {
+        
+            if (listaCarrerasTerminadas.get(i).getNombreCarrera().equals(seleccionado)) { 
+            
+                for (int x = 0 ; x < listaCarrerasTerminadas.get(i).getInformeCarrera().size() ; x ++) {
+                
+                dtm.addRow(listaCarrerasTerminadas.get(i).getInformeCarrera().get(x).toArrayString());
+                
+                }
+            }
+          }
+        
+        
+        jTableListaCarreras.setModel(dtm);
+        
+     } 
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,6 +80,7 @@ public class InformesCarreras extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableListaCarreras = new javax.swing.JTable();
+        jButtonActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,35 +99,50 @@ public class InformesCarreras extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTableListaCarreras);
 
+        jButtonActualizar.setText("Actualizar");
+        jButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBoxListaCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxListaCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonActualizar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxListaCarreras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jButtonActualizar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
+       
+        refrescarTabla();
+        
+    }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,6 +150,7 @@ public class InformesCarreras extends javax.swing.JDialog {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonActualizar;
     private javax.swing.JComboBox<String> jComboBoxListaCarreras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

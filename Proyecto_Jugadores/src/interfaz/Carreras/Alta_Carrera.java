@@ -7,6 +7,7 @@ package interfaz.Carreras;
 
 import datos.Carrera;
 import datos.Corredor;
+import datos.InformeCarrera;
 import interfaz.Corredores.*;
 import interfaz.PantallaPrincipal;
 import java.util.ArrayList;
@@ -243,9 +244,10 @@ public class Alta_Carrera extends javax.swing.JDialog {
         String fecha = jTextFieldFechaCarrera.getText();
         String lugar = jTextFieldLugarCarrera.getText(); 
         String participantes = jTextFieldMaximoParticipantes.getText();
+        List <InformeCarrera> informeCarrera = new ArrayList <InformeCarrera>();
       //  List<Corredor> listaCorredores = jTextFieldTelefonoCorredor.getText();
         
-        Carrera carrera = new Carrera(nombre,fecha,lugar,participantes, listaCorredoresSeleccionados);
+        Carrera carrera = new Carrera(nombre,fecha,lugar,participantes, listaCorredoresSeleccionados, informeCarrera);
     
         LogicaNegocio.aniadirCarrera(carrera);
         

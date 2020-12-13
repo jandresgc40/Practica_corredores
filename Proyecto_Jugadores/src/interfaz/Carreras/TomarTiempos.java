@@ -202,7 +202,12 @@ public class TomarTiempos extends javax.swing.JDialog {
     private void jButtonTiempoCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTiempoCorredorActionPerformed
 
         String dorsal = (String) jComboBoxDorsal.getSelectedItem();
-        String tiempo = componenteTemporizador1.getText();
+        //String tiempo = componenteTemporizador1.;
+        
+        //int tiempoCorredor = (int)120 - Integer.parseInt(tiempo);
+        
+        //tiempo = String.valueOf(tiempoCorredor);
+        String tiempo = "5";
                
         String seleccionado = (String) jComboBoxListaCarreras.getSelectedItem();
        
@@ -212,9 +217,9 @@ public class TomarTiempos extends javax.swing.JDialog {
          for (int i = 0 ; i < listaCarreras.size() ; i++) {
         
             if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
-                
-                InformeCarrera informeCarrera = new InformeCarrera(tiempo, dorsal);
-                listaCarreras.get(i).setInformeCarrera(informeCarrera);
+                          
+                InformeCarrera informeCarrera = new InformeCarrera(tiempo, dorsal);   
+                listaCarreras.get(i).getInformeCarrera().add(informeCarrera);
                 
             }
         

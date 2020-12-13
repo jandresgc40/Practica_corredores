@@ -10,15 +10,28 @@ public class Carrera {
     private String numMaxParticipantes;
     private List<Corredor> listaCorredores; // el dorsal puede ser la posición de ese corredor en el array.
    
-    private InformeCarrera informeCarrera;
+    private List <InformeCarrera> informeCarrera;
+    
+    
 
-    public InformeCarrera getInformeCarrera() {
+    public List<InformeCarrera> getInformeCarrera() {
         return informeCarrera;
     }
 
-    public void setInformeCarrera(InformeCarrera informeCarrera) {
+    public void setInformeCarrera(List<InformeCarrera> informeCarrera) {
         this.informeCarrera = informeCarrera;
     }
+
+    public Carrera(String nombreCarrera, String fechaCarrera, String lugarCarrera, String numMaxParticipantes, List<Corredor> listaCorredores, List<InformeCarrera> informeCarrera) {
+        this.nombreCarrera = nombreCarrera;
+        this.fechaCarrera = fechaCarrera;
+        this.lugarCarrera = lugarCarrera;
+        this.numMaxParticipantes = numMaxParticipantes;
+        this.listaCorredores = listaCorredores;
+        this.informeCarrera = informeCarrera;
+    }
+    
+    
     
     public Carrera(String nombreCarrera, String fechaCarrera, String lugarCarrera, String numMaxParticipantes, List<Corredor> listaCorredores) {
         this.nombreCarrera = nombreCarrera;
@@ -79,7 +92,7 @@ public class Carrera {
         this.listaCorredores = listaCorredores;
     }
     
-     public String[] toArrayString() {
+    public String[] toArrayString() {
         
         String[] s = new String [5];
         s[0] = nombreCarrera;

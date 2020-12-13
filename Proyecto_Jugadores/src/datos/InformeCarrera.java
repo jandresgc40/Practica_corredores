@@ -51,6 +51,15 @@ public class InformeCarrera {
         this.dorsal = dorsal;
     }
    
+     public String[] toArrayString() {
+        
+        String[] s = new String [2];
+        s[0] = dorsal;
+        s[1] = tiempo;
+        return s;
+    
+    }
+    
 }
 
 
