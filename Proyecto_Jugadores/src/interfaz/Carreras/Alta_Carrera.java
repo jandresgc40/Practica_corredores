@@ -12,7 +12,11 @@ import interfaz.Corredores.*;
 import interfaz.PantallaPrincipal;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import logicaNegocio.LogicaNegocio;
+import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
+import org.netbeans.validation.api.ui.ValidationGroup;
 
 /**
  *
@@ -29,10 +33,35 @@ public class Alta_Carrera extends javax.swing.JDialog {
      * Creates new form Alta_Corredor
      */
     public Alta_Carrera(java.awt.Frame parent, boolean modal) {
+        
         super(parent, modal);
         pantallaPrincipal = (PantallaPrincipal)parent;
         initComponents();
+        jButtonAltaCorredor.setEnabled(false);
         refrescarComboBox();
+        
+        ValidationGroup group = validationPanelAltaCarrera.getValidationGroup();
+        group.add(jTextFieldNombreCarrera, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldLugarCarrera, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldFechaCarrera, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldMaximoParticipantes, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        
+        validationPanelAltaCarrera.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent ce) {
+                
+                if (validationPanelAltaCarrera.getProblem() == null) {
+                
+                    jButtonAltaCorredor.setEnabled(true);
+                
+                }else {
+                    
+                        jButtonAltaCorredor.setEnabled(false);
+                        
+                    }
+                
+            }
+        });
         
     }
     
@@ -76,9 +105,11 @@ public class Alta_Carrera extends javax.swing.JDialog {
         jButtonCancelarAltaCorredor = new javax.swing.JButton();
         jComboBoxCorredores = new javax.swing.JComboBox<>();
         jButtonAnadirCorredorCarrera = new javax.swing.JButton();
+        validationPanelAltaCarrera = new org.netbeans.validation.api.ui.swing.ValidationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jTextFieldNombreCarrera.setName("Nombre carrera"); // NOI18N
         jTextFieldNombreCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNombreCarreraActionPerformed(evt);
@@ -86,13 +117,16 @@ public class Alta_Carrera extends javax.swing.JDialog {
         });
 
         jTextFieldFechaCarrera.setText("dd-MM-aaaa");
+        jTextFieldFechaCarrera.setName("Fecha carrera"); // NOI18N
 
+        jTextFieldLugarCarrera.setName("Lugar carrera"); // NOI18N
         jTextFieldLugarCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLugarCarreraActionPerformed(evt);
             }
         });
 
+        jTextFieldMaximoParticipantes.setName("Maximos participantes"); // NOI18N
         jTextFieldMaximoParticipantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldMaximoParticipantesActionPerformed(evt);
@@ -143,34 +177,39 @@ public class Alta_Carrera extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombreCarrera)
-                            .addComponent(jTextFieldFechaCarrera)
-                            .addComponent(jTextFieldLugarCarrera)
-                            .addComponent(jTextFieldMaximoParticipantes)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBoxCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonAnadirCorredorCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addComponent(jButtonAltaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCancelarAltaCorredor)))
+                        .addComponent(jButtonCancelarAltaCorredor))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(validationPanelAltaCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldNombreCarrera)
+                                    .addComponent(jTextFieldFechaCarrera)
+                                    .addComponent(jTextFieldLugarCarrera)
+                                    .addComponent(jTextFieldMaximoParticipantes)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jComboBoxCorredores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonAnadirCorredorCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(7, 7, 7)
+                .addComponent(validationPanelAltaCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNombreCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -278,5 +317,6 @@ public class Alta_Carrera extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldLugarCarrera;
     private javax.swing.JTextField jTextFieldMaximoParticipantes;
     private javax.swing.JTextField jTextFieldNombreCarrera;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel validationPanelAltaCarrera;
     // End of variables declaration//GEN-END:variables
 }

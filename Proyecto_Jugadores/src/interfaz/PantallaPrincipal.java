@@ -16,6 +16,7 @@ import interfaz.Corredores.Alta_Corredor;
 import interfaz.Corredores.Borrar_Corredor;
 import interfaz.Corredores.Modificar_Corredor;
 import interfaz.Corredores.Mostrar_Corredores;
+import java.util.Locale;
 
 /**
  *
@@ -312,6 +313,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Locale.setDefault(new Locale ("es", "ES"));
                 new PantallaPrincipal().setVisible(true);
             }
         });

@@ -6,7 +6,11 @@
 package interfaz.Corredores;
 
 import datos.Corredor;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import logicaNegocio.LogicaNegocio;
+import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
+import org.netbeans.validation.api.ui.ValidationGroup;
 
 /**
  *
@@ -18,7 +22,31 @@ public class Alta_Corredor extends javax.swing.JDialog {
     public Alta_Corredor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        jButtonAltaCorredor.setEnabled(false);
         
+        ValidationGroup group = validationPanelAltaCorredor.getValidationGroup();
+        group.add(jTextFieldNombreCorredor, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldDniCorredor, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldFechaNacimientoCorredor, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldDireccionCorredor, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldTelefonoCorredor, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        
+        validationPanelAltaCorredor.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent ce) {
+                
+                if (validationPanelAltaCorredor.getProblem() == null) {
+                
+                    jButtonAltaCorredor.setEnabled(true);
+                
+                }else {
+                    
+                        jButtonAltaCorredor.setEnabled(false);
+                        
+                    }
+                
+            }
+        });
         
     }
 
@@ -43,21 +71,30 @@ public class Alta_Corredor extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jButtonAltaCorredor = new javax.swing.JButton();
         jButtonCancelarAltaCorredor = new javax.swing.JButton();
+        validationPanelAltaCorredor = new org.netbeans.validation.api.ui.swing.ValidationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jTextFieldNombreCorredor.setName("Nombre"); // NOI18N
         jTextFieldNombreCorredor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNombreCorredorActionPerformed(evt);
             }
         });
 
+        jTextFieldDniCorredor.setName("DNI"); // NOI18N
+
         jTextFieldFechaNacimientoCorredor.setText("dd-MM-aaaa");
+        jTextFieldFechaNacimientoCorredor.setName("Fecha"); // NOI18N
         jTextFieldFechaNacimientoCorredor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFechaNacimientoCorredorActionPerformed(evt);
             }
         });
+
+        jTextFieldDireccionCorredor.setName("Dirección"); // NOI18N
+
+        jTextFieldTelefonoCorredor.setName("Teléfono"); // NOI18N
 
         jLabel1.setText("Nombre:");
 
@@ -108,13 +145,18 @@ public class Alta_Corredor extends javax.swing.JDialog {
                         .addGap(116, 116, 116)
                         .addComponent(jButtonAltaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCancelarAltaCorredor)))
+                        .addComponent(jButtonCancelarAltaCorredor))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(validationPanelAltaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(6, 6, 6)
+                .addComponent(validationPanelAltaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNombreCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -201,5 +243,6 @@ public class Alta_Corredor extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldFechaNacimientoCorredor;
     private javax.swing.JTextField jTextFieldNombreCorredor;
     private javax.swing.JTextField jTextFieldTelefonoCorredor;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel validationPanelAltaCorredor;
     // End of variables declaration//GEN-END:variables
 }
