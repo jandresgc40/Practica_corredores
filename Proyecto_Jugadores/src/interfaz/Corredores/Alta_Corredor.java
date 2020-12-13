@@ -137,7 +137,7 @@ public class Alta_Corredor extends javax.swing.JDialog {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelarAltaCorredor)
-                    .addComponent(jButtonAltaCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonAltaCorredor))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 

@@ -22,6 +22,9 @@ public class TomarTiempos extends javax.swing.JDialog {
     /**
      * Creates new form TomarTiempos
      */
+    
+    public String tiempo;
+    
     public TomarTiempos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         pantallaPrincipal = (PantallaPrincipal)parent;
@@ -92,8 +95,8 @@ public class TomarTiempos extends javax.swing.JDialog {
         jComboBoxListaCarreras = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jButtonIniciarTemporizador = new javax.swing.JButton();
-        componenteTemporizador1 = new componentetemporizador.ComponenteTemporizador();
         jButton1 = new javax.swing.JButton();
+        relojDigital1 = new relojdigital.RelojDigital();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -135,6 +138,8 @@ public class TomarTiempos extends javax.swing.JDialog {
             }
         });
 
+        relojDigital1.setFormato24(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,25 +152,26 @@ public class TomarTiempos extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxListaCarreras, 0, 167, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(componenteTemporizador1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jButtonIniciarTemporizador, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBoxDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonTiempoCorredor))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(48, 48, 48)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jComboBoxDorsal, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButtonTiempoCorredor))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(48, 48, 48))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(relojDigital1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jButtonIniciarTemporizador, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(118, 118, 118))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 332, Short.MAX_VALUE)
                 .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -179,7 +185,7 @@ public class TomarTiempos extends javax.swing.JDialog {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonIniciarTemporizador)
-                    .addComponent(componenteTemporizador1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(relojDigital1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonTiempoCorredor)
@@ -202,12 +208,42 @@ public class TomarTiempos extends javax.swing.JDialog {
     private void jButtonTiempoCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTiempoCorredorActionPerformed
 
         String dorsal = (String) jComboBoxDorsal.getSelectedItem();
-        //String tiempo = componenteTemporizador1.;
+             
+        String tiempoCorredor = relojDigital1.getText();
+     
+        String minutosCorredor = tiempoCorredor.substring(3,5);
+        String segundosCorredor = tiempoCorredor.substring(6,8);
         
-        //int tiempoCorredor = (int)120 - Integer.parseInt(tiempo);
+   
+        String minutosInicio = tiempo.substring(3,5);
+        String segundosInicio = tiempo.substring(6,8);
+
+        int minutoFinal = 0;
+        int segundoFinal = 0;
         
-        //tiempo = String.valueOf(tiempoCorredor);
-        String tiempo = "5";
+        Integer.parseInt(minutosCorredor);
+        Integer.parseInt(minutosInicio);
+        
+        if (Integer.parseInt(minutosCorredor) >= Integer.parseInt(minutosInicio)) {
+            
+            minutoFinal = Integer.parseInt(minutosCorredor) - Integer.parseInt(minutosInicio);
+        
+        } else if (Integer.parseInt(minutosCorredor) < Integer.parseInt(minutosInicio)) {
+        
+            minutoFinal = Integer.parseInt(minutosCorredor) + (60 - Integer.parseInt(minutosInicio));
+        
+        }
+         if (Integer.parseInt(segundosCorredor) >= Integer.parseInt(segundosInicio)) {
+            
+            segundoFinal = Integer.parseInt(segundosCorredor) - Integer.parseInt(segundosInicio);
+        
+        } else if (Integer.parseInt(segundosCorredor) < Integer.parseInt(segundosInicio)) {
+        
+            segundoFinal = Integer.parseInt(segundosCorredor) + (60 - Integer.parseInt(segundosInicio));
+        
+        }
+    
+        String tiempoFinal = String.valueOf(minutoFinal) + ":" + String.valueOf(segundoFinal);;
                
         String seleccionado = (String) jComboBoxListaCarreras.getSelectedItem();
        
@@ -218,7 +254,7 @@ public class TomarTiempos extends javax.swing.JDialog {
         
             if (listaCarreras.get(i).getNombreCarrera().equals(seleccionado)) {
                           
-                InformeCarrera informeCarrera = new InformeCarrera(tiempo, dorsal);   
+                InformeCarrera informeCarrera = new InformeCarrera(tiempoFinal, dorsal);   
                 listaCarreras.get(i).getInformeCarrera().add(informeCarrera);
                 
             }
@@ -236,7 +272,7 @@ public class TomarTiempos extends javax.swing.JDialog {
 
     private void jButtonIniciarTemporizadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarTemporizadorActionPerformed
         
-       componenteTemporizador1.setNumSegundos(120);
+           tiempo = relojDigital1.getText();
         
     }//GEN-LAST:event_jButtonIniciarTemporizadorActionPerformed
 
@@ -257,7 +293,8 @@ public class TomarTiempos extends javax.swing.JDialog {
             }
         
         }
-         
+        
+        dispose();
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -269,7 +306,6 @@ public class TomarTiempos extends javax.swing.JDialog {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private componentetemporizador.ComponenteTemporizador componenteTemporizador1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonIniciarTemporizador;
     private javax.swing.JButton jButtonSalir;
@@ -278,5 +314,6 @@ public class TomarTiempos extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> jComboBoxListaCarreras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private relojdigital.RelojDigital relojDigital1;
     // End of variables declaration//GEN-END:variables
 }
